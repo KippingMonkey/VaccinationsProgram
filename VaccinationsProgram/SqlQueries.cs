@@ -320,7 +320,7 @@ namespace VaccinationsProgram
         {
             Clear();
             WriteLine("Searching for previous test results.");
-            bool fileExists = true;
+            string result = "";
 
             try
             {
@@ -338,7 +338,7 @@ namespace VaccinationsProgram
                 command = new SqlCommand(query, connection);
 
                 // get query result and print it
-                string result = (string)command.ExecuteScalar();
+                result = (string)command.ExecuteScalar();
                 WriteLine(result);
             }
             finally
@@ -353,7 +353,9 @@ namespace VaccinationsProgram
             PressEnterToContinue();
 
             //if files are found move to the next step
-            if (fileExists) { LoadDatabaseResults(); }
+            if (result == "Files found") { LoadDatabaseResults(); }
+            else { return; }
+            
         }
 
        /// <summary>
