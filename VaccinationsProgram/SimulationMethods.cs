@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using static System.Console;
 using static VaccinationsProgram.SqlQueries;
 using static VaccinationsProgram.Program;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("VaccinationProgramTests")]
+//https://stackoverflow.com/questions/15440935/how-to-test-internal-class-library
+//Even though this is an internal class the above property allows a specific project or file outside access outside that assembly
 
 namespace VaccinationsProgram
 {
